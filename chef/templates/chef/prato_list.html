@@ -1,0 +1,175 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Le Cheff</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'imagens/Le cheff.png' %}"/>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="grey darken-4" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="{% url 'home' %}" class="brand-logo yellow-text">Le Cheff</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="white-text" href="{% url 'cardapio' %}">Conheça nossos pratos!</a></li>
+        <li><a class="white-text" href="{% url 'galeria' %}">Galeria</a></li>
+        <li><a class="white-text" href="{% url 'admin:login' %}">Administração</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="{% url 'cardapio' %}">Conheça nossos pratos!</a></li>
+        <li><a href="{% url 'galeria' %}">Galeria</a></li>
+        <li><a href="{% url 'admin:login' %}">Administração</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons" style="color:yellow">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <div class="center-align black-text">
+            <h1 style="text-shadow: 6px 6px #000000" class="header center white-text text-lighten-2">Nossos pratos</h1>
+            <div class="row center">
+              <h5 class="header col s12 light white-text">Temperados com perfeição</h5>
+            </div>
+          </div>
+        <div class="row center">
+          <!-- Modal Trigger -->
+          <a href="#modal1" class="btn-large waves-effect waves-light yellow darken-3 lighten-1 modal-trigger black-text">Ver lista completa</a>
+        </div>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4>Lista de pratos</h4>
+            <p><div class="container z-depth-0 center-align black-text">
+                <table class="responsive-table">
+                  <h2 style="color:black">Nossos pratos</h2>
+                  <table>
+                   <thead>
+                     <tr>
+                         <th>Prato</th>
+                         <th>Descrição</th>
+                     </tr>
+                   </thead>
+                  <tbody>
+                    {% for prato in lista_pratos %}
+                    <tr>
+                      <td><a style="" class="black-text">{{prato.nome}}</a></td>
+                      <td><a style="" class="black-text">{{prato.descricao_breve}}</a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+          </p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+          </div>
+        </div>
+        <h3 style="text-shadow: 6px 6px #000000" class="header center white-text text-lighten-2">Abaixo, nossos pratos mais requisitados</h3>
+        <br><br>
+      </div>
+    </div>
+    <img class="right" style="width:200px; margin-top:-250px" src="{% static 'imagens/Le cheff.png' %}" alt="">
+    <div class="parallax"><img src="{% static 'imagens/b11.jpg' %}" alt="Unsplashed background img 1"></div>
+  </div>
+
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i href="#modal2" class="large material-icons yellow darken-3 modal-trigger">message</i>
+    </a>
+  </div>
+
+
+
+  <!-- Modal Structure2 -->
+  <div id="modal2" style="width:230px" class="modal modal-fixed-footer">
+    <div class="modal-content row center">
+      <h4></h4>
+      <div id="fb-root"></div>
+      <div class="fb-page"
+      data-tabs="messages"
+      data-href="https://www.facebook.com/Le-Cheff-145459902845535/"
+      data-width="180"
+      data-height="350"></div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+    </div>
+  </div>
+
+{% for requisitado in lista_requisitados %}
+<div style="" class="grey darken-4 center flow-text white-text">
+  <br>
+  <h5>{{requisitado.prato}}</h5>
+  <p class="container">{{requisitado.descricao}}</p>
+  <br>
+</div>
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+      </div>
+    </div>
+    <div class="parallax"><img src="{{requisitado.imagem}}" alt="Unsplashed background img 2"></div>
+  </div>
+{% endfor %}
+
+  <footer class="page-footer grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Le Chef</h5>
+          <p class="grey-text text-lighten-4">Receitas tradicionais e os melhores ingredientes</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Facebook</h5>
+          <ul>
+            <li><a class="white-text" href="https://www.facebook.com/lecheffjp/">LeCheff</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Twitter</h5>
+          <ul>
+            <li><a class="white-text" href="#!">LeCheff</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center-align">
+      2017 <a class="brown-text text-lighten-3" href="#!">Le Cheff</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.modal').modal();
+    });
+  </script>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.10';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  </body>
+</html>

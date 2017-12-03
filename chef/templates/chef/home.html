@@ -1,0 +1,41 @@
+{% extends 'chef/base.html' %}
+{% block title %}Le Chef - Inicio{% endblock %}
+{% block parallax %}
+  <div class="center-align black-text">
+    <h1 style="text-shadow: 6px 6px #000000" class="header center white-text text-lighten-2">Personal Chef e Buffet</h1>
+    <div class="row center">
+      <h5 class="header col s12 light white-text">Receitas tradicionais</h5>
+    </div>
+  </div>
+{% endblock %}
+{% block content %}
+<div class="container center-align white-text flow-text">
+  <h2>A delícia da culinária</h2>
+  <p style="">Trabalhamos com a cozinha internacional, oferecendo pratos italianos, franceses, espanhois, brasileiros e muito mais!</p>
+</div>
+
+
+{% endblock %}
+{% block content2 %}
+<div class="container z-depth-0 center-align">
+    <table>
+      <h2 style="color:white">Pratos mais requisitados</h2>
+      <tbody>
+        {% for requisitado in lista_requisitados %}
+        <tr>
+          <td><a style="font-size:25px;" class="white-text">{{requisitado.prato}}</a></td>
+          <td><a style="font-size:25px;" class="white-text">{{requisitado.prato.descricao_breve}}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block botao %}Sobre Nós{% endblock %}
+{% block titulo %}Sobre Nós{% endblock %}
+{% block modal %}
+<div class="container center-align flow-text">
+  <h2>A delicia da culinária</h2>
+  <p style="color:gray">Trabalhamos com a cozinha internacional, oferecendo pratos italianos, franceses, espanhois, brasileiros e muito mais!</p>
+</div>
+{% endblock %}
