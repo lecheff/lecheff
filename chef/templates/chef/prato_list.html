@@ -46,37 +46,19 @@
           <a href="#modal1" class="btn-large waves-effect waves-light yellow darken-3 lighten-1 modal-trigger black-text">Ver lista completa</a>
         </div>
         <!-- Modal Structure -->
-        <div id="modal1" class="modal modal-fixed-footer">
+        <div id="modal1" class="modal modal-fixed-footer black-text">
           <div class="modal-content">
             <h4>Lista de pratos</h4>
-            <p><div class="container z-depth-0 center-align black-text">
-                <table class="responsive-table">
-                  <h2 style="color:black">Nossos pratos</h2>
-                  <table>
-                   <thead>
-                     <tr>
-                         <th>Prato</th>
-                         <th>Descrição</th>
-                     </tr>
-                   </thead>
-                  <tbody>
-                    {% for prato in lista_pratos %}
-                    <tr>
-                      <td><a style="" class="black-text">{{prato.nome}}</a></td>
-                      <td><a style="" class="black-text">{{prato.descricao_breve}}</a></td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-          </p>
+            <ul class="collection">
+                  {% for prato in lista_pratos %}
+                  <li class="collection-item center"><h5>{{prato.nome}}</h5> <br> {{prato.descricao_breve}}</li>
+                  {% endfor %}
+                </ul>
           </div>
           <div class="modal-footer">
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
           </div>
         </div>
-        <h3 style="text-shadow: 6px 6px #000000" class="header center white-text text-lighten-2">Abaixo, nossos pratos mais requisitados</h3>
-        <br><br>
       </div>
     </div>
     <img class="right" style="width:200px; margin-top:-250px" src="{% static 'imagens/Le cheff.png' %}" alt="">
