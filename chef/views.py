@@ -13,5 +13,3 @@ def home(request):
 def galeria(request):
     lista_imagens = Imagem.objects.all()
     return render(request, 'chef/galeria.html', {'lista_imagens':lista_imagens})
-
-#teste
